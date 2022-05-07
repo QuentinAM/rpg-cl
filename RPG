@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage : rpg.sh <length>"
+    exit 1
+fi
+
+# Check if the argument is a positive number
+if [ "$1" -eq "$1" ] 2>/dev/null; then
+    if [ $1 -gt 0 ]; then
+        tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[]^_`{|}~' </dev/urandom | head -c $1
+    else
+        echo "Usage : rpg.sh <length>, length must be a positive number"
+    fi
+else
+    echo "Usage : rpg.sh <length>, length must be a positive number"
+fi
+
+
+# https://unix.stackexchange.com/questions/230673/how-to-generate-a-random-string
